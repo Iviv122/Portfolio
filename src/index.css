@@ -1,0 +1,7 @@
+body{
+    font-family: NerdFont;
+}
+@font-face {
+    font-family: NerdFont;
+    src: url(./fonts/0xProtoNerdFontMono-Regular.ttf);
+}
