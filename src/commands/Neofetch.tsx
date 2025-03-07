@@ -37,7 +37,6 @@ function HandleLines (i : number): string{
             return "Skills : undefined"
         case 11:
             return "Hobbies: Games, Art, Music, Sport"
-
         case 13:
             return "Nice to meet you"
 

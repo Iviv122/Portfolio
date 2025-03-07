@@ -4,7 +4,8 @@ const commands = [
 "help",
 "links",
 "ls",
-"neofetch"
+"neofetch",
+"clear"
 ]
 const colorCom = "#8be9fd";
 export default function Help() {

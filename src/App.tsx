@@ -23,7 +23,7 @@ function App() {
   },[])
 
 
-
+  {/* SKILL ISSUE */}
   function HandleInput(input : string){
     console.log(input);
     switch (input) {
