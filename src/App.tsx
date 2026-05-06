@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="flex justify-center bg-gray-950">
-      <div className="absolute flex justify-center items-center">
+      <div className="absolute flex justify-center items-center z-2">
         <ButtonBlock onClick={() =>setPage(<Home />)} text="Home"/>
         <VerticalSeparator/>
         <ButtonBlock onClick={() =>setPage(<Home />)} text="Past Expirience"/>
