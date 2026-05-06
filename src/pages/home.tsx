@@ -13,8 +13,10 @@ export default function Home() {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
+        // avoid possible null
+        const realctx = canvas.getContext("2d");
+        if (!realctx) return;
+        const ctx = realctx;
 
         const width = window.innerWidth;
         const height = window.innerHeight;
@@ -41,7 +43,7 @@ export default function Home() {
         }
 
         function drawCell(x: number, y: number, state: number) {
-            const col = state * 255;
+            const col = state * 180;
             ctx.fillStyle = `rgba(${col},${col},${col},1)`;
             ctx.fillRect(x * pixel_size, y * pixel_size, pixel_size, pixel_size);
         }
@@ -51,7 +53,7 @@ export default function Home() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.01)";
             ctx.fillRect(0, 0, width, height);
             if (row >= rows){
-                rule_num = Math.floor(Math.random() * 254+1);
+                rule_num = Math.floor(Math.random() * 253+2);
                 iterate(0)
                 return;
             };
