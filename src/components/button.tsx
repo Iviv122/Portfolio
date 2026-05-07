@@ -1,28 +1,31 @@
 type ButtonProps = {
   text: string;
   onClick?: () => void;
+  active: boolean
 };
 
-export default function ButtonBlock({ text, onClick }: ButtonProps) {
+export default function ButtonBlock({ text, onClick, active }: ButtonProps) {
   return (
     <button
-    className="
-    text-mauve-300
-    text-bl
-    sm:text-3xl
-    text-center
+      className="
+      text-mauve-300
+      text-bl
+      sm:text-3xl
+      text-center
 
-    p-2
-    w-full
+      p-2
+      w-full
 
-    hover:scale-125
-    hover:text-green-500
-    transition-all
-    duration-100
-    ease-in-out
-    "
-    onClick={onClick}>
-      {text}
+      hover:scale-125
+      hover:text-green-500
+      transition-all
+      duration-100
+      ease-in-out
+      "
+      onClick={onClick}>
+      <div className={ active ? "text-green-500" : "text-mauve-300"}>
+        {text}
+      </div>
     </button>
   );
 }

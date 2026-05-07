@@ -1,4 +1,6 @@
+import { IoLogoGithub } from "react-icons/io";
 import WolframRules from "../components/wolfram_rules";
+import { SiGmail } from "react-icons/si";
 
 export default function Home() {
     return (
@@ -16,6 +18,27 @@ export default function Home() {
                 <h2 className="text-stone-50 font-mono sm:text-2xl text-sm gap-2">
                     High school student, programming enthusiast :D
                 </h2>
+                <div className="flex text-4xl p-1 m-1 gap-4 text-stone-50 ">
+                    <a
+                        className="
+                        hover:scale-125
+                        hover:text-green-500
+                        focus:
+                        transition-all
+                        duration-100
+                        ease-in-out
+                        "
+                    ><IoLogoGithub /></a>
+                    <a
+                        className="
+                        hover:scale-125
+                        hover:text-green-500
+                        transition-all
+                        duration-100
+                        ease-in-out
+                        "
+                    ><SiGmail /></a>
+                </div>
             </div>
             <div className="w-full h-full">
                 <WolframRules />
