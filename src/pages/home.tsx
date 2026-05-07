@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import WolframRules from "../components/wolfram_rules";
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -29,8 +30,8 @@ export default function Home() {
 
         ctx.fillStyle = "#1a1d23";
         ctx.fillRect(0, 0, width, height);
-        
-        
+
+
         function sfc32(a: number, b: number, c: number, d: number) {
             return function () {
                 a |= 0; b |= 0; c |= 0; d |= 0;
@@ -49,7 +50,7 @@ export default function Home() {
         const c = 2286335670;
         const d = 118324663;
         console.log(a + "+" + b + "+" + c + "+" + d)
-        const getRand = sfc32(a,b,c,d);
+        const getRand = sfc32(a, b, c, d);
 
         for (let i = 0; i < cols; i++) {
             current[i] = getRand();
@@ -93,7 +94,23 @@ export default function Home() {
 
     return (
         <div className="w-full h-full bg-[#1a1d23]">
-            <canvas ref={canvasRef} className="absolute top-0 left-0" />
+            <div className="absolute z-2 flex flex-col justify-center items-center w-full h-full">
+                <h1 className="text-stone-50 font-mono text-4xl gap-2">
+                    Hi! I am {" "}
+                    <div className="font-bold inline">
+                        <span className="translate-y-[5px] inline-block animate-wave [animation-delay:0s]">I</span>
+                        <span className="translate-y-[5px] inline-block animate-wave [animation-delay:0.2s]">V</span>
+                        <span className="translate-y-[5px] inline-block animate-wave [animation-delay:0.4s]">A</span>
+                        <span className="translate-y-[5px] inline-block animate-wave [animation-delay:0.6s]">N</span>
+                    </div>
+                </h1>
+                <h2 className="text-stone-50 font-mono sm:text-2xl text-sm gap-2">
+                    High school student, programming enthusiast :D
+                </h2>
+            </div>
+            <div className="w-full h-full">
+                <WolframRules />
+            </div>
         </div>
     );
 }
