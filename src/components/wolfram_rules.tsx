@@ -1,4 +1,4 @@
-import { useRef, useEffect} from "react";
+import { useRef, useEffect } from "react";
 
 export default function WolframRules() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -7,7 +7,7 @@ export default function WolframRules() {
 
 
     useEffect(() => {
-        const realCanvas = canvasRef.current; 
+        const realCanvas = canvasRef.current;
         if (!realCanvas) return;
         const canvas = realCanvas;
         const realctx = canvas.getContext("2d");
@@ -26,13 +26,19 @@ export default function WolframRules() {
                 return (t >>> 0) / 4294967296;
             }
         }
+
         let animationId: number;
+
         const getRand = sfc32(2177591200, 398881965, 2286335670, 118324663);
+
         function start() {
             const width = window.innerWidth;
             const height = window.innerHeight;
             const cols = Math.floor(width / pixel_size);
             const rows = Math.floor(height / pixel_size);
+            
+            const defog_speed = 4.785;
+
             canvas.width = width;
             canvas.height = height;
 
@@ -62,7 +68,7 @@ export default function WolframRules() {
                 ctx.fillRect(x * pixel_size, y * pixel_size, pixel_size, pixel_size);
             }
             function iterate(row: number) {
-                ctx.fillStyle = "rgba(26, 29, 35, 0.015)";
+                ctx.fillStyle = `rgba(26, 29, 35, ${defog_speed/cols})`;
                 ctx.fillRect(0, 0, width, height);
 
                 if (row >= rows) {
