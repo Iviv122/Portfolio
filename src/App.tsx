@@ -39,7 +39,7 @@ function App() {
       <div className="w-full h-screen">
         {page === "home" && <Home />}
         {page === "about" && <AboutMe />}
-        {page === "projects" && <Projects />}
+        {page === "projects" && <Projects/>}
       </div>
     </div>
   )
