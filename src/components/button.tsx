@@ -14,7 +14,7 @@ export default function ButtonBlock({ text, onClick, active }: ButtonProps) {
       text-center
 
       p-2
-      w-full
+     
 
       hover:scale-125
       hover:text-green-500

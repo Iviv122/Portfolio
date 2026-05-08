@@ -75,19 +75,19 @@ export default function FireBackground() {
 
             function iterate() {
                 if (mouseX >= 0 && mouseX <= cols && mouseY >= 0 && mouseY < rows) {
-                    cur[mouseY][mouseX] = stages.length - 1;
+                    cur[mouseY][mouseX] = stages.length;
                 }
                 if (mouseX-1 >= 0 && mouseX-1 <= cols && mouseY >= 0 && mouseY < rows) {
-                    cur[mouseY][mouseX-1] = stages.length - 1;
+                    cur[mouseY][mouseX-1] = stages.length;
                 }
                 if (mouseX+1 >= 0 && mouseX+1 <= cols && mouseY >= 0 && mouseY < rows) {
-                    cur[mouseY][mouseX+1] = stages.length - 1;
+                    cur[mouseY][mouseX+1] = stages.length;
                 }
                 if (mouseX >= 0 && mouseX <= cols && mouseY-1 >= 0 && mouseY-1 < rows) {
-                    cur[mouseY-1][mouseX] = stages.length - 1;
+                    cur[mouseY-1][mouseX] = stages.length;
                 }
                 if (mouseX >= 0 && mouseX <= cols && mouseY+1 >= 0 && mouseY+1 < rows) {
-                    cur[mouseY+1][mouseX] = stages.length - 1;
+                    cur[mouseY+1][mouseX] = stages.length;
                 }
 
                 for (let x = 0; x < cols; x++) {

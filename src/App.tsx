@@ -3,7 +3,7 @@ import Home from "./pages/home"
 import ButtonBlock from "./components/button"
 import VerticalSeparator from "./components/vertical_sep"
 import AboutMe from "./pages/about_me"
-import Projects from "./pages/Projects"
+import Projects from "./pages/projects"
 
 function App() {
   // there are ways to do better but...
@@ -11,8 +11,8 @@ function App() {
   const [page, setPage] = useState("home")
 
   return (
-    <div className="flex justify-center bg-gray-950">
-      <div className="absolute flex justify-center items-center z-10">
+    <div className="h-dvh w-dvw flex justify-center bg-gray-950">
+      <div className="fixed flex justify-center items-center z-10 top-0 left-0 right-0 gap-3">
         <ButtonBlock
           onClick={() => setPage("home")}
           text="Home"
@@ -36,7 +36,7 @@ function App() {
         />
       </div>
 
-      <div className="w-full h-screen">
+      <div className="h-dvh w-dvw">
         {page === "home" && <Home />}
         {page === "about" && <AboutMe />}
         {page === "projects" && <Projects/>}
