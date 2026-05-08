@@ -15,7 +15,6 @@ export default function AboutMe() {
             </div>
             <div className="w-full h-full">
                 <FireBackground />
-                {/*<Fireflies/>*/}
             </div>
         </div>
     )
