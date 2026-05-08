@@ -94,22 +94,18 @@ export default function FireBackground() {
                                 + left
                                 + right
                                 + current) /
-                            6 -
-                            Math.random() * 0.2;
+                            6.1 +(
+                            Math.random() * 0.8-0.4);
 
                         value = Math.max(0, value);
-
                         next[y][x] = value;
-
                         drawCell(x, y, value);
                     }
                 }
 
                 [cur, next] = [next, cur];
-
                 animationId = requestAnimationFrame(iterate);
             }
-
             iterate();
         }
 
