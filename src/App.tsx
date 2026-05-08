@@ -4,6 +4,7 @@ import ButtonBlock from "./components/button"
 import VerticalSeparator from "./components/vertical_sep"
 import AboutMe from "./pages/about_me"
 import Projects from "./pages/projects"
+import PastExpirience from "./pages/past_expirience"
 
 function App() {
   // there are ways to do better but...
@@ -12,23 +13,25 @@ function App() {
 
   return (
     <div className="h-dvh w-dvw flex justify-center bg-gray-950">
-      <div className="fixed flex justify-center items-center z-10 top-0 left-0 right-0 gap-3">
+      <div className="fixed flex justify-center items-center z-10 top-0 left-0 right-0  sm:gap-3">
         <ButtonBlock
           onClick={() => setPage("home")}
           text="Home"
           active={page === "home"}
         />
-
         <VerticalSeparator />
-
         <ButtonBlock
           onClick={() => setPage("about")}
-          text="Past Experience"
+          text="About me"
           active={page === "about"}
         />
-
         <VerticalSeparator />
-
+        <ButtonBlock
+          onClick={() => setPage("past_expirience")}
+          text="Past expirience"
+          active={page === "past_expirience"}
+        />
+        <VerticalSeparator />
         <ButtonBlock
           onClick={() => setPage("projects")}
           text="Projects"
@@ -39,7 +42,8 @@ function App() {
       <div className="h-dvh w-dvw">
         {page === "home" && <Home />}
         {page === "about" && <AboutMe />}
-        {page === "projects" && <Projects/>}
+        {page === "past_expirience" && <PastExpirience />}
+        {page === "projects" && <Projects />}
       </div>
     </div>
   )

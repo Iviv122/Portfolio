@@ -3,7 +3,11 @@ import { useRef, useEffect } from "react";
 export default function FireBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    const pixelSize = 7;
+    const isMobile =
+        typeof window !== "undefined" &&
+        /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    const pixelSize = 8;
     const stages = [
         "#090909", // black
         "#111217", // near black smoke
@@ -77,24 +81,24 @@ export default function FireBackground() {
                 if (mouseX >= 0 && mouseX <= cols && mouseY >= 0 && mouseY < rows) {
                     cur[mouseY][mouseX] = stages.length;
                 }
-                if (mouseX-1 >= 0 && mouseX-1 <= cols && mouseY >= 0 && mouseY < rows) {
-                    cur[mouseY][mouseX-1] = stages.length;
+                if (mouseX - 1 >= 0 && mouseX - 1 <= cols && mouseY >= 0 && mouseY < rows) {
+                    cur[mouseY][mouseX - 1] = stages.length;
                 }
-                if (mouseX+1 >= 0 && mouseX+1 <= cols && mouseY >= 0 && mouseY < rows) {
-                    cur[mouseY][mouseX+1] = stages.length;
+                if (mouseX + 1 >= 0 && mouseX + 1 <= cols && mouseY >= 0 && mouseY < rows) {
+                    cur[mouseY][mouseX + 1] = stages.length;
                 }
-                if (mouseX >= 0 && mouseX <= cols && mouseY-1 >= 0 && mouseY-1 < rows) {
-                    cur[mouseY-1][mouseX] = stages.length;
+                if (mouseX >= 0 && mouseX <= cols && mouseY - 1 >= 0 && mouseY - 1 < rows) {
+                    cur[mouseY - 1][mouseX] = stages.length;
                 }
-                if (mouseX >= 0 && mouseX <= cols && mouseY+1 >= 0 && mouseY+1 < rows) {
-                    cur[mouseY+1][mouseX] = stages.length;
+                if (mouseX >= 0 && mouseX <= cols && mouseY + 1 >= 0 && mouseY + 1 < rows) {
+                    cur[mouseY + 1][mouseX] = stages.length;
                 }
 
                 for (let x = 0; x < cols; x++) {
                     cur[rows - 1][x] =
                         Math.random() > 0.5
                             ? stages.length - 1
-                            : stages.length/4;
+                            : stages.length / 4;
                 }
 
                 for (let y = 0; y < rows - 1; y++) {
@@ -115,7 +119,7 @@ export default function FireBackground() {
                                 + right
                                 + current) /
                             6.1 + (
-                                Math.random() * 0.8 - 0.4);
+                                Math.random() * 1 - 0.5);
 
                         value = Math.max(0, value);
                         next[y][x] = value;
@@ -132,14 +136,17 @@ export default function FireBackground() {
                 mouseY = Math.floor(e.clientY / pixelSize);
             }
 
-            window.addEventListener("mousemove", handleMouseMove);
+            if (!isMobile) {
+                window.addEventListener("mousemove", handleMouseMove);
 
-            return () => {
-                window.removeEventListener(
-                    "mousemove",
-                    handleMouseMove
-                );
-            };
+                return () => {
+                    window.removeEventListener(
+                        "mousemove",
+                        handleMouseMove
+                    );
+                };
+            }
+
         }
 
         start();

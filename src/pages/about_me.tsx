@@ -9,7 +9,7 @@ export default function AboutMe() {
                         Hello once again! I am 18yo from Ukraine currently located in Poland and attending to technical school as software developer.
                     </p>
                     <p>
-                       I am interested in  
+                       I am interested in many things and fields but mainly programming and game developing.
                     </p>
                 </div>
             </div>

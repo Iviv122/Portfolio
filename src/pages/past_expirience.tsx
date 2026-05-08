@@ -1,4 +1,4 @@
-export default function Projects() {
+export default function PastExpirience() {
     return (
         <div>
             <div className="absolute z-2 flex flex-col justify-center items-center w-full h-full">
@@ -10,5 +10,5 @@ export default function Projects() {
                 {/*<Fireflies/>*/}
             </div>
         </div>
-    )
+    );
 }

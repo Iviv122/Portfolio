@@ -9,7 +9,7 @@ export default function ButtonBlock({ text, onClick, active }: ButtonProps) {
     <button
       className="
       text-mauve-300
-      text-bl
+      text-sm
       sm:text-3xl
       text-center
 
