@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 export default function FireBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    const pixelSize = 6;
+    const pixelSize = 7;
     const stages = [
         "#090909", // black
         "#111217", // near black smoke
@@ -23,6 +23,7 @@ export default function FireBackground() {
         "#fff1c1", // near white
         "#ffffff", // white hot
     ];
+
     useEffect(() => {
         const realCanvas = canvasRef.current;
         if (!realCanvas) return;
@@ -43,6 +44,10 @@ export default function FireBackground() {
             canvas.height = height;
 
             ctx.imageSmoothingEnabled = false;
+
+
+            let mouseX = -100
+            let mouseY = -100
 
             let cur = Array.from({ length: rows }, () =>
                 Array(cols).fill(0)
@@ -69,12 +74,27 @@ export default function FireBackground() {
             }
 
             function iterate() {
-                // random fire source at bottom
+                if (mouseX >= 0 && mouseX <= cols && mouseY >= 0 && mouseY < rows) {
+                    cur[mouseY][mouseX] = stages.length - 1;
+                }
+                if (mouseX-1 >= 0 && mouseX-1 <= cols && mouseY >= 0 && mouseY < rows) {
+                    cur[mouseY][mouseX-1] = stages.length - 1;
+                }
+                if (mouseX+1 >= 0 && mouseX+1 <= cols && mouseY >= 0 && mouseY < rows) {
+                    cur[mouseY][mouseX+1] = stages.length - 1;
+                }
+                if (mouseX >= 0 && mouseX <= cols && mouseY-1 >= 0 && mouseY-1 < rows) {
+                    cur[mouseY-1][mouseX] = stages.length - 1;
+                }
+                if (mouseX >= 0 && mouseX <= cols && mouseY+1 >= 0 && mouseY+1 < rows) {
+                    cur[mouseY+1][mouseX] = stages.length - 1;
+                }
+
                 for (let x = 0; x < cols; x++) {
                     cur[rows - 1][x] =
-                        Math.random() > 0.3
+                        Math.random() > 0.5
                             ? stages.length - 1
-                            : 0;
+                            : stages.length/4;
                 }
 
                 for (let y = 0; y < rows - 1; y++) {
@@ -94,8 +114,8 @@ export default function FireBackground() {
                                 + left
                                 + right
                                 + current) /
-                            6.1 +(
-                            Math.random() * 0.8-0.4);
+                            6.1 + (
+                                Math.random() * 0.8 - 0.4);
 
                         value = Math.max(0, value);
                         next[y][x] = value;
@@ -107,6 +127,19 @@ export default function FireBackground() {
                 animationId = requestAnimationFrame(iterate);
             }
             iterate();
+            function handleMouseMove(e: MouseEvent) {
+                mouseX = Math.floor(e.clientX / pixelSize);
+                mouseY = Math.floor(e.clientY / pixelSize);
+            }
+
+            window.addEventListener("mousemove", handleMouseMove);
+
+            return () => {
+                window.removeEventListener(
+                    "mousemove",
+                    handleMouseMove
+                );
+            };
         }
 
         start();
