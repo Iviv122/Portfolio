@@ -1,10 +1,11 @@
-import Fireflies from "../components/fireflies";
+import FireBackground from "../components/fire_background";
 
 export default function AboutMe(){
     return(
         <div>
             <div className="w-full h-full">
-                <Fireflies/>
+                <FireBackground/>
+                {/*<Fireflies/>*/}
             </div>
         </div>
     )
