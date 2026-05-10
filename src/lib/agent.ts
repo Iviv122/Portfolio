@@ -13,6 +13,7 @@ export interface Agent {
     iter_left: number
     iter_repeat: number
     iter_repeat_left: number
+    depth?: number
     action?: () => void
 }
 

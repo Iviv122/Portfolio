@@ -53,7 +53,7 @@ export default function CityDraw() {
                 for (let i = agents.length - 1; i >= 0; i--) {
                     const agent = agents[i];
 
-                    step(agent, 1.5*-Math.sin(agent.speed), ctx);
+                    step(agent, 1.5*Math.sin(agent.speed), ctx);
 
                     if (agent.iter_left <= 0) {
                         agents.splice(i, 1);
@@ -71,14 +71,15 @@ export default function CityDraw() {
                                 agent.pos.y,
                                 agent.dir,
                                 agent.speed * (progress),
-                                agent.iter_left_init*(progress)/2,
+                                agent.iter_left_init*(progress)/phi,
                                 agent.divider,
                                 "pink",
                             )
                             rotate_agent(new_agent, 90)
 
-                            agent.iter_repeat *= 1.61803399
+                            agent.iter_repeat *= phi 
                             agent.iter_repeat_left = agent.iter_repeat
+                            agent.divider += agent.divider
                             agents.push(new_agent)
 
                     }
