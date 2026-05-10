@@ -1,3 +1,5 @@
+import CityDraw from "../components/cityDraw";
+
 export default function PastExpirience() {
     return (
         <div>
@@ -7,6 +9,7 @@ export default function PastExpirience() {
                 </p>
             </div>
             <div className="w-full h-full">
+                <CityDraw/>
                 {/*<Fireflies/>*/}
             </div>
         </div>
