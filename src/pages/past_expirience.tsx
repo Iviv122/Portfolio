@@ -1,3 +1,4 @@
+import CityDraw from "../components/cityDraw";
 import ShatteredGlass from "../components/shuttered_glass";
 
 export default function PastExpirience() {
@@ -8,6 +9,7 @@ export default function PastExpirience() {
                 </p>
             </div>
             <div className="w-full h-full">
+                {/*<CityDraw/>*/}
                 <ShatteredGlass/>
             </div>
         </div>

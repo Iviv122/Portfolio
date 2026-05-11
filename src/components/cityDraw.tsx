@@ -42,18 +42,18 @@ export default function CityDraw() {
                 agents.push(new_agent)
             }
 
+            let stepping = 0;
             function iterate() {
+                stepping+=1
                 if(agents.length <= 0){
                     return;
                 }
-                ctx.fillStyle = `rgba(26, 29, 35, 0.005)`;
-                ctx.fillRect(0, 0, width, height);
 
 
                 for (let i = agents.length - 1; i >= 0; i--) {
                     const agent = agents[i];
 
-                    step(agent, 1.5*Math.sin(agent.speed), ctx);
+                    step(agent, 1.5*-Math.sin(agent.speed)-(0.01*stepping), ctx);
 
                     if (agent.iter_left <= 0) {
                         agents.splice(i, 1);

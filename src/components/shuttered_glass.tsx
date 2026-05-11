@@ -56,7 +56,7 @@ export default function ShatteredGlass() {
                     5,
                     Math.sqrt(Math.pow(width,2)+Math.pow(height,2))/10,
                     20,
-                    "#4a5568",
+                    "pink",
                 )
                 new_agent.depth = 0; // Track depth
                 agents.push(new_agent)
@@ -72,7 +72,7 @@ export default function ShatteredGlass() {
                     agents = agents.slice(0, maxAgents);
                 }
 
-                ctx.fillStyle = `rgba(26, 29, 35, 0.0015)`;
+                ctx.fillStyle = `rgba(26, 29, 35, 0.05)`;
                 ctx.fillRect(0, 0, width, height);
 
                 for (let i = agents.length - 1; i >= 0; i--) {
@@ -88,7 +88,7 @@ export default function ShatteredGlass() {
                             agent.speed * 0.9, // Slower branches
                             Math.max(agent.iter_left_init * 0.4, 10), // Minimum length
                             agent.divider,
-                            "#4a5568",
+                            "pink",
                         )
                         new_agent.depth = (agent.depth || 0) + 1;
                         return new_agent
