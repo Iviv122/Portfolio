@@ -15,10 +15,20 @@ export default function CityDraw() {
         let animationId: number;
 
         function start() {
+            const dpr = window.devicePixelRatio || 1;
             const width = window.innerWidth;
             const height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+
+            // Set display size (css pixels)
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            // Set actual size in memory (scaled to account for extra pixel density)
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // Scale all drawing operations by the dpr
+            ctx.scale(dpr, dpr);
 
             ctx.fillStyle = "#1a1d23";
             ctx.fillRect(0, 0, width, height);
@@ -35,21 +45,25 @@ export default function CityDraw() {
                     agent.pos.y,
                     agent.dir,
                     agent.speed,
-                    used*(1-progress),
+                    used * (1 - progress),
                     agent.divider,
                     "pink",
                 )
                 rotate_agent(new_agent, 90)
                 agents.push(new_agent)
             }
+            console.log(height)
+
+            const diagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2))
+            const halfDiagonal = diagonal / 2
 
             for (let i = 0; i < 460 / angle; i++) {
                 const new_agent = getAgent(
                     width / 2,
                     height / 2,
                     rotate({ x: 1, y: 1 }, angle * i),
-                    5,
-                    60,
+                    1,
+                    halfDiagonal / 3,
                     60,
                     "white",
                     spawnAgent
@@ -60,12 +74,13 @@ export default function CityDraw() {
             let stepping = 0;
             function iterate() {
 
-                stepping+=10
-
+                stepping += 10
+                ctx.fillStyle = `rgba(26, 29, 35, ${0.01/4})`;
+                ctx.fillRect(0, 0, width, height);
                 if (agents.length <= 0) {
                     return;
                 }
-                
+
 
                 for (let i = agents.length - 1; i >= 0; i--) {
                     const agent = agents[i];
