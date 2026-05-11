@@ -14,7 +14,7 @@ export interface Agent {
     iter_repeat: number
     iter_repeat_left: number
     depth?: number
-    action?: () => void
+    action?: (agent:Agent) => void
 }
 
 export function getAgent(
@@ -25,7 +25,7 @@ export function getAgent(
     iterLive: number,
     divider: number,
     color: string,
-    action: () => void = () => { }
+    action: (agent: Agent) => void = () => { }
 ): Agent {
     return {
         pos: { x, y },

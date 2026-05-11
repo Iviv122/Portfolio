@@ -23,12 +23,26 @@ export default function CityDraw() {
             ctx.fillStyle = "#1a1d23";
             ctx.fillRect(0, 0, width, height);
 
-            ctx.imageSmoothingEnabled = false;
-
             let agents = [] as Agent[]
-            const phi = 1.61803399
-            const pi = 3.14159265359
             const angle = 60
+
+            function spawnAgent(agent: Agent) {
+                const used = agent.iter_left_init - agent.iter_left
+                const progress = used / agent.iter_left_init
+
+                const new_agent = getAgent(
+                    agent.pos.x,
+                    agent.pos.y,
+                    agent.dir,
+                    agent.speed,
+                    used*(1-progress),
+                    agent.divider,
+                    "pink",
+                )
+                rotate_agent(new_agent, 90)
+                agents.push(new_agent)
+            }
+
             for (let i = 0; i < 460 / angle; i++) {
                 const new_agent = getAgent(
                     width / 2,
@@ -36,52 +50,36 @@ export default function CityDraw() {
                     rotate({ x: 1, y: 1 }, angle * i),
                     5,
                     60,
-                    30,
+                    60,
                     "white",
+                    spawnAgent
                 )
                 agents.push(new_agent)
             }
 
             let stepping = 0;
             function iterate() {
-                stepping+=1
-                if(agents.length <= 0){
+
+                stepping+=10
+
+                if (agents.length <= 0) {
                     return;
                 }
-
+                
 
                 for (let i = agents.length - 1; i >= 0; i--) {
                     const agent = agents[i];
 
-                    step(agent, 1.5*-Math.sin(agent.speed)-(0.01*stepping), ctx);
+                    step(agent, 3 * Math.sin(stepping * 0.01) * 0.5, ctx);
 
                     if (agent.iter_left <= 0) {
                         agents.splice(i, 1);
                     }
                     if (agent.iter_repeat_left <= 0) {
-                            let used = agent.iter_left_init - agent.iter_left
-                            let progress = used / agent.iter_left_init
-
-                            if (progress >= 1) {
-                                progress = 0
-                                used = 0
-                            }
-                            const new_agent = getAgent(
-                                agent.pos.x,
-                                agent.pos.y,
-                                agent.dir,
-                                agent.speed * (progress),
-                                agent.iter_left_init*(progress)/phi,
-                                agent.divider,
-                                "pink",
-                            )
-                            rotate_agent(new_agent, 90)
-
-                            agent.iter_repeat *= phi 
+                        if (agent.action) {
+                            agent.action(agent);
                             agent.iter_repeat_left = agent.iter_repeat
-                            agent.divider += agent.divider
-                            agents.push(new_agent)
-
+                        }
                     }
                 }
 
