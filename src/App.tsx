@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="h-dvh w-dvw flex justify-center bg-gray-950">
-      <div className="fixed flex justify-center items-center z-10 top-0 left-0 right-0  sm:gap-3">
+      <div className="fixed flex justify-center items-center z-10 top-1 sm:top-3 left-0 right-0  sm:gap-3">
         <ButtonBlock
           onClick={() => setPage("home")}
           text="Home"

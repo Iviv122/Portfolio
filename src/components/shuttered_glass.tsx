@@ -72,7 +72,7 @@ export default function ShatteredGlass() {
                     agents = agents.slice(0, maxAgents);
                 }
 
-                ctx.fillStyle = `rgba(26, 29, 35, 0.05)`;
+                ctx.fillStyle = `rgba(26, 29, 35, ${0.05})`;
                 ctx.fillRect(0, 0, width, height);
 
                 for (let i = agents.length - 1; i >= 0; i--) {

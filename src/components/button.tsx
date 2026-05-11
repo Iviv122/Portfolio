@@ -10,8 +10,9 @@ export default function ButtonBlock({ text, onClick, active }: ButtonProps) {
       className="
       text-mauve-300
       text-sm
-      sm:text-3xl
+      sm:text-2xl
       text-center
+      cursor-pointer
 
       p-2
      
