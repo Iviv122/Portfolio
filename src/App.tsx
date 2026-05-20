@@ -4,7 +4,7 @@ import ButtonBlock from "./components/button"
 import VerticalSeparator from "./components/vertical_sep"
 import AboutMe from "./pages/about_me"
 import Projects from "./pages/projects"
-import PastExpirience from "./pages/past_expirience"
+import PastExperience from "./pages/past_expirience"
 
 function App() {
   // there are ways to do better but...
@@ -28,8 +28,8 @@ function App() {
         <VerticalSeparator />
         <ButtonBlock
           onClick={() => setPage("past_expirience")}
-          text="Past expirience"
-          active={page === "past_expirience"}
+          text="Past experience"
+          active={page === "past_experience"}
         />
         <VerticalSeparator />
         <ButtonBlock
@@ -42,7 +42,7 @@ function App() {
       <div className="h-dvh w-dvw">
         {page === "home" && <Home />}
         {page === "about" && <AboutMe />}
-        {page === "past_expirience" && <PastExpirience />}
+        {page === "past_experience" && <PastExperience />}
         {page === "projects" && <Projects />}
       </div>
     </div>

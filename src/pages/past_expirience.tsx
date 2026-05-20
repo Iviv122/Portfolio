@@ -1,6 +1,6 @@
 import ShatteredGlass from "../components/shuttered_glass";
 
-export default function PastExpirience() {
+export default function PastExperience() {
     return (
         <div>
             <div className="absolute z-2 flex flex-col justify-center items-center w-full h-full">
