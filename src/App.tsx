@@ -27,9 +27,9 @@ function App() {
         />
         <VerticalSeparator />
         <ButtonBlock
-          onClick={() => setPage("past_expirience")}
+          onClick={() => setPage("PastExperience")}
           text="Past experience"
-          active={page === "past_experience"}
+          active={page === "PastExperience"}
         />
         <VerticalSeparator />
         <ButtonBlock
@@ -42,7 +42,7 @@ function App() {
       <div className="h-dvh w-dvw">
         {page === "home" && <Home />}
         {page === "about" && <AboutMe />}
-        {page === "past_experience" && <PastExperience />}
+        {page === "PastExperience" && <PastExperience />}
         {page === "projects" && <Projects />}
       </div>
     </div>
